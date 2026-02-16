@@ -1,0 +1,63 @@
+############################
+# Python
+############################
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.venv/
+venv/
+env/
+ENV/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Unit test / coverage
+.coverage
+.coverage.*
+.cache/
+pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints
+
+############################
+# PyCharm / IntelliJ
+############################
+
+.idea/
+*.iml
+
+# Specifically ignore workspace file causing your issue
+.idea/workspace.xml
+
+############################
+# OS files
+############################
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+############################
+# Logs
+############################
+
+*.log
+
+############################
+# Temporary files
+############################
+
+*.tmp
+*.swp
