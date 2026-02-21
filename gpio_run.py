@@ -1,68 +1,55 @@
 # Michael Bliesath - GPIO_Run
 
 import time
-
-try:
-    import RPi.GPIO as GPIO
-except ImportError:
-    raise SystemExit("RPi.GPIO not found. Run this on a Raspberry Pi with RPi.GPIO installed.")
+from gpiozero import LED, Button
 
 from Circuit import Circuit
+from Solution import Solution
+from Bus import Bus
 
 # ---------- GPIO CONFIG ----------
-GPIO.setmode(GPIO.BCM)
+BREAKER_PIN = 17
+LED_PIN = 27
 
-BREAKER_PIN = 17  # BCM 17 (physical pin 11)
-# We'll use internal pull-up: switch connects pin->GND when "closed" (or vice versa)
-GPIO.setup(BREAKER_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-
-DEBOUNCE_MS = 80
-
-def read_breaker_closed() -> bool:
-    """
-    With PUD_UP:
-    - pin reads 1 when switch OPEN (not connected to GND)
-    - pin reads 0 when switch CLOSED (connected to GND)
-    Adjust logic based on your wiring.
-    """
-    return GPIO.input(BREAKER_PIN) == 0
+breaker_switch = Button(BREAKER_PIN, pull_up=False)
+status_led = LED(LED_PIN)
 
 # ---------- BUILD CIRCUIT ----------
 c = Circuit()
-# build your circuit elements as your project expects...
-# e.g., c.add_bus(...), c.add_line(...), etc.
+a = Bus("A")
+b = Bus("B")
 
-# Add breaker between nodes A and B
-br = c.add_breaker("BR_AB", "A", "B", is_closed=True)
+c.add_bus("A")
+c.add_bus("B")
 
-# solver = Solution(c)  # <-- create your solver instance
+c.add_vsource_element("Va", "A", 100.0)
+c.add_resistor_element("Rab", "A", "B", 5.0)
+c.add_load_element("Lb", "B", 2000.0, 100.0)
+c.add_breaker("Breaker1", "A", "B", True)
 
-def run_solver_and_visualize():
-    # solver.do_power_flow()   # <-- call your actual solve method
-    # results = solver.results  # <-- or however you store results
-    # For now, just show breaker state:
-    print(f"Breaker {br.name} closed? {br.is_closed}")
-    # TODO: update LEDs / display here using solver outputs
+solution = Solution(c)
+solution.do_power_flow()
 
-def main():
-    try:
-        # Initialize from switch position
-        br._closed = read_breaker_closed()
-        run_solver_and_visualize()
+c.print_nodal_voltage()
+c.print_circuit_current()
 
-        last_state = br.is_closed
+def open_breaker():
+    c.breakers["Breaker1"].open()
+    status_led.on()
+    solution.do_power_flow()
 
-        while True:
-            current_state = read_breaker_closed()
-            if current_state != last_state:
-                br._closed = current_state
-                run_solver_and_visualize()
-                last_state = current_state
+def close_breaker():
+    c.breakers["Breaker1"].close()
+    status_led.off()
+    solution.do_power_flow()
 
-            time.sleep(0.05)
+breaker_switch.when_pressed = open_breaker
+breaker_switch.when_released = close_breaker
 
-    finally:
-        GPIO.cleanup()
+# Initial solve
+solution.do_power_flow()
 
-if __name__ == "__main__":
-    main()
+print("System running...")
+
+while True:
+    time.sleep(0.1)

@@ -24,7 +24,6 @@ class Solution:
             raise ValueError("Circuit must contain buses 'A' and 'B'.")
         if not c.is_connection_closed("A", "B"):
             c.set_i(0.0)
-            c.buses["A"].v = 0.0
             c.buses["B"].v = 0.0
         else:
             pass
