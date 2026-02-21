@@ -1,21 +1,29 @@
+# Michael Bliesath - Bus
+
+import numpy as np
+import pandas as pd
+
 class Bus:
-    index_counter = 1
-
-    def __init__(self, name:str, nominal_kv:float):
+    def __init__(self, name:str):
         self.name = name
-        self.nominal_kv = nominal_kv
-        self.bus_index = Bus.index_counter
-        Bus.index_counter += 1
+        self._v = None # Change - Default voltage value
 
-if __name__ == "__main__":
-    bus1 = Bus("Bus1", 20.0)
+    @property
+    def v(self):
+        return self._v
 
-    print(f"Bus1 name: {bus1.name}")
-    print(f"Bus1 Nominal Voltage: {bus1.nominal_kv} Volts")
-    print(f"Bus1 Index: {bus1.bus_index}")
+    @v.setter
+    def v(self, new_v:float): # Fix
+        if new_v < 0:
+            raise ValueError("Bus voltage must be a non-negative value.")
+        self._v = new_v
 
-    bus2 = Bus("Bus2", 230.0)
+if __name__ == '__main__':
+    bus1 = Bus("Bus1")
+    print(f"Bus1 Voltage: {bus1.v} Volts")
 
-    print(f"Bus2 name: {bus2.name}")
-    print(f"Bus2 Nominal Voltage: {bus2.nominal_kv} Volts")
-    print(f"Bus2 Index: {bus2.bus_index}")
+    bus1.v = 9.0
+    print(f"Bus1 Voltage: {bus1.v} Volts")
+
+    bus1.v = -1.0
+    print(f"Bus1 Voltage: {bus1.v} Volts")
