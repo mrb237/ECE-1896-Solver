@@ -4,17 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5f8b555-9829-4147-8910-3c32e3e02545" name="Changes" comment="Milestone 2">
-      <change afterPath="$PROJECT_DIR$/Breaker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resistor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Solution.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/VSource.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gpio_run.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="d5f8b555-9829-4147-8910-3c32e3e02545" name="Changes" comment="Prototype">
+      <change beforePath="$PROJECT_DIR$/Breaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/Breaker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Bus.py" beforeDir="false" afterPath="$PROJECT_DIR$/Bus.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Circuit.py" beforeDir="false" afterPath="$PROJECT_DIR$/Circuit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resistor.py" beforeDir="false" afterPath="$PROJECT_DIR$/Resistor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Solution.py" beforeDir="false" afterPath="$PROJECT_DIR$/Solution.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VSource.py" beforeDir="false" afterPath="$PROJECT_DIR$/VSource.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/load.py" beforeDir="false" afterPath="$PROJECT_DIR$/load.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +60,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "web.server",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -112,7 +111,7 @@
       <option name="presentableId" value="Default" />
       <updated>1771266860512</updated>
       <workItem from="1771266862351" duration="331000" />
-      <workItem from="1771625375229" duration="2493000" />
+      <workItem from="1771625375229" duration="7060000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <option name="closed" value="true" />
@@ -130,7 +129,23 @@
       <option name="project" value="LOCAL" />
       <updated>1771267909546</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Prototype">
+      <option name="closed" value="true" />
+      <created>1771655277896</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1771655277896</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Prototype">
+      <option name="closed" value="true" />
+      <created>1771655302099</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1771655302099</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,6 +154,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Test" />
     <MESSAGE value="Milestone 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Milestone 2" />
+    <MESSAGE value="Prototype" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prototype" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ECE_1896_Solver$main.coverage" NAME="main Coverage Results" MODIFIED="1771663139255" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
