@@ -1,14 +1,10 @@
 # Michael Bliesath - Solution
 
-# import numpy as np
-# import pandas as pd
-
 from Circuit import Circuit
-from Breaker import Breaker
 
 
 class Solution:
-    def __init__(self, circuit:Circuit):
+    def __init__(self, circuit: Circuit):
         self.circuit = circuit
 
     def do_power_flow(self):
@@ -22,11 +18,13 @@ class Solution:
             raise ValueError("This solver expects exactly ONE load.")
         if "A" not in c.buses or "B" not in c.buses:
             raise ValueError("Circuit must contain buses 'A' and 'B'.")
+
+        c.buses["A"].v = float(c.vsource.v)
+
         if not c.is_connection_closed("A", "B"):
             c.set_i(0.0)
             c.buses["B"].v = 0.0
-        else:
-            pass
+            return  # <<< CRITICAL FIX
 
         r_series = next(iter(c.resistors.values()))
         load = next(iter(c.loads.values()))

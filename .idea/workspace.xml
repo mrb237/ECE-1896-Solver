@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d5f8b555-9829-4147-8910-3c32e3e02545" name="Changes" comment="Prototype + SSH">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gpio_run.py" beforeDir="false" afterPath="$PROJECT_DIR$/gpio_run.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +107,7 @@
       <workItem from="1771266862351" duration="331000" />
       <workItem from="1771625375229" duration="7911000" />
       <workItem from="1771702942536" duration="8203000" />
-      <workItem from="1771870005530" duration="2026000" />
+      <workItem from="1771870005530" duration="3105000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <option name="closed" value="true" />
@@ -174,7 +173,23 @@
       <option name="project" value="LOCAL" />
       <updated>1771707532190</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Prototype + SSH">
+      <option name="closed" value="true" />
+      <created>1771874158780</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1771874158780</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Prototype + SSH">
+      <option name="closed" value="true" />
+      <created>1771874381631</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1771874381631</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
