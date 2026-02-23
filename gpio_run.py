@@ -30,18 +30,23 @@ c.add_breaker("Breaker1", "A", "B", True)
 solution = Solution(c)
 solution.do_power_flow()
 
-c.print_nodal_voltage()
-c.print_circuit_current()
-
 def open_breaker():
     c.breakers["Breaker1"].open()
     status_led.on()
     solution.do_power_flow()
+    print("Breaker Opened:")
+    c.print_nodal_voltage()
+    c.print_circuit_current()
+    print("---------------")
 
 def close_breaker():
     c.breakers["Breaker1"].close()
     status_led.off()
     solution.do_power_flow()
+    print("Breaker Closed:")
+    c.print_nodal_voltage()
+    c.print_circuit_current()
+    print("---------------")
 
 breaker_switch.when_pressed = open_breaker
 breaker_switch.when_released = close_breaker
