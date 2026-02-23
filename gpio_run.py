@@ -15,7 +15,7 @@ breaker_switch = Button(BREAKER_PIN, pull_up=False)
 status_led = LED(LED_PIN)
 
 # ---------- BUILD CIRCUIT ----------
-c = Circuit()
+c = Circuit("SimpleCircuit")
 a = Bus("A")
 b = Bus("B")
 
