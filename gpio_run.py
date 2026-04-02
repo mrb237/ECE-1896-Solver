@@ -87,12 +87,10 @@ solution.do_power_flow()
 def _signal_pins_on():
     for o in signal_outputs:
         o.on()
-        print(f"  PIN {o.pin} -> ON, value={o.value}")
 
 def _signal_pins_off():
     for o in signal_outputs:
         o.off()
-        print(f"  PIN {o.pin} -> OFF, value={o.value}")
 
 def open_breaker():
     global _seq_running
