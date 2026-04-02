@@ -42,25 +42,34 @@ def _fill(color):
         strip.setPixelColor(i, color)
     strip.show()
 
-def sequence_blue_green():
-    """
-    Sequence: each pixel steps from blue to green one at a time,
-    matching the previous blue→green animation style.
-    """
-    BLUE  = Color(0,   0,   255)
-    GREEN = Color(0,   255, 0)
-    _fill(BLUE)
-    time.sleep(0.3)
-    for i in range(strip.numPixels()):
-        strip.setPixelColor(i, GREEN)
-        strip.show()
-        time.sleep(0.1)
+BLUE  = Color(0,   0,   255)
+GREEN = Color(0,   255, 0)
+OFF   = Color(0,   0,   0)
 
-def solid_green():
-    _fill(Color(0, 255, 0))
+# Pattern: 3 green ON, 3 OFF, 3 blue ON, 3 OFF  (repeating block of 12)
+BASE_PATTERN = [GREEN, GREEN, GREEN, OFF, OFF, OFF, BLUE, BLUE, BLUE, OFF, OFF, OFF]
+
+def sequence_leds(offset):
+    """Render one frame of the scrolling pattern using the given offset."""
+    n = strip.numPixels()
+    p = len(BASE_PATTERN)
+    for i in range(n):
+        strip.setPixelColor(i, BASE_PATTERN[(i + offset) % p])
+    strip.show()
 
 def leds_off():
-    _fill(Color(0, 0, 0))
+    _fill(OFF)
+
+# ---------- SEQUENCING STATE ----------
+_seq_offset   = 0
+_seq_running  = False
+
+def _seq_step():
+    """Called repeatedly by the main loop to advance the animation one frame."""
+    global _seq_offset
+    if _seq_running:
+        sequence_leds(_seq_offset)
+        _seq_offset = (_seq_offset + 1) % len(BASE_PATTERN)
 
 # ---------- BUILD CIRCUIT ----------
 c = Circuit("SimpleCircuit")
@@ -84,11 +93,12 @@ def _signal_pins_off():
         led.off()
 
 def open_breaker():
+    global _seq_running
     c.breakers["Breaker1"].open()
     solution.do_power_flow()
 
     _signal_pins_on()        # Assert all 7 output signals
-    leds_off()               # LEDs off when breaker opens
+    _seq_running = True      # Start LED sequence
 
     print("Breaker Opened:")
     c.print_nodal_voltage()
@@ -96,11 +106,13 @@ def open_breaker():
     print("---------------")
 
 def close_breaker():
+    global _seq_running
     c.breakers["Breaker1"].close()
     solution.do_power_flow()
 
     _signal_pins_off()       # De-assert all 7 output signals
-    sequence_blue_green()    # Blue → green NeoPixel sequence on GPIO 18
+    _seq_running = False     # Stop LED sequence
+    leds_off()               # Clear strip
 
     print("Breaker Closed:")
     c.print_nodal_voltage()
@@ -123,8 +135,9 @@ breaker_switch.when_released = close_breaker  # switch LOW   → close
 
 # ---------- STARTUP ----------
 solution.do_power_flow()
-solid_green()   # Nominal state: steady green — change to leds_off() if preferred
+leds_off()
 print("System running...  (Ctrl+C to stop)")
 
 while True:
-    time.sleep(0.1)
+    _seq_step()
+    time.sleep(0.08)   # ~12 fps scroll speed — lower = faster
