@@ -3,7 +3,7 @@
 import time
 import signal
 import sys
-from gpiozero import LED, Button
+from gpiozero import OutputDevice, Button
 from rpi_ws281x import PixelStrip, Color
 
 from Circuit import Circuit
@@ -29,7 +29,7 @@ LED_BRIGHTNESS = 128       # 0-255
 
 # ---------- HARDWARE INIT ----------
 breaker_switch = Button(SWITCH_PIN, pull_up=False)
-signal_leds    = [LED(p) for p in SIGNAL_PINS]
+signal_outputs = [OutputDevice(p, active_high=True, initial_value=False) for p in SIGNAL_PINS]
 
 strip = PixelStrip(LED_COUNT, LED_PIN, LED_FREQ_HZ,
                    LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
@@ -85,12 +85,12 @@ solution.do_power_flow()
 
 # ---------- BREAKER ACTIONS ----------
 def _signal_pins_on():
-    for led in signal_leds:
-        led.on()
+    for o in signal_outputs:
+        o.on()
 
 def _signal_pins_off():
-    for led in signal_leds:
-        led.off()
+    for o in signal_outputs:
+        o.off()
 
 def open_breaker():
     global _seq_running
@@ -98,7 +98,8 @@ def open_breaker():
     solution.do_power_flow()
 
     _signal_pins_on()        # Assert all 7 output signals
-    _seq_running = True      # Start LED sequence
+    _seq_running = False     # Stop LED sequence
+    leds_off()               # Clear strip
 
     print("Breaker Opened:")
     c.print_nodal_voltage()
@@ -111,8 +112,7 @@ def close_breaker():
     solution.do_power_flow()
 
     _signal_pins_off()       # De-assert all 7 output signals
-    _seq_running = False     # Stop LED sequence
-    leds_off()               # Clear strip
+    _seq_running = True      # Start LED sequence
 
     print("Breaker Closed:")
     c.print_nodal_voltage()
@@ -130,8 +130,8 @@ signal.signal(signal.SIGINT,  shutdown)
 signal.signal(signal.SIGTERM, shutdown)
 
 # ---------- ATTACH SWITCH ----------
-breaker_switch.when_pressed  = close_breaker  # switch HIGH (ON)  → LEDs sequence, pins OFF
-breaker_switch.when_released = open_breaker   # switch LOW  (OFF) → LEDs off, pins ON
+breaker_switch.when_pressed  = close_breaker  # switch ON  → LEDs sequence, signal pins OFF
+breaker_switch.when_released = open_breaker   # switch OFF → LEDs off, signal pins ON
 
 # ---------- STARTUP ----------
 solution.do_power_flow()
