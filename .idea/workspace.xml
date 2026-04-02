@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5f8b555-9829-4147-8910-3c32e3e02545" name="Changes" comment="Prototype + SSH">
+      <change beforePath="$PROJECT_DIR$/.idea/ECE-1896-Solver.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ECE-1896-Solver.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gpio_run.py" beforeDir="false" afterPath="$PROJECT_DIR$/gpio_run.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +110,18 @@
       <workItem from="1771266862351" duration="331000" />
       <workItem from="1771625375229" duration="7911000" />
       <workItem from="1771702942536" duration="8203000" />
-      <workItem from="1771870005530" duration="3105000" />
+      <workItem from="1771870005530" duration="3515000" />
+      <workItem from="1771938126810" duration="28000" />
+      <workItem from="1771954596796" duration="293000" />
+      <workItem from="1771954913369" duration="497000" />
+      <workItem from="1771970265264" duration="778000" />
+      <workItem from="1772046219049" duration="11000" />
+      <workItem from="1772049297811" duration="36000" />
+      <workItem from="1772110736137" duration="124000" />
+      <workItem from="1772113846482" duration="755000" />
+      <workItem from="1772432765740" duration="582000" />
+      <workItem from="1772474655673" duration="82000" />
+      <workItem from="1775146635524" duration="532000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <option name="closed" value="true" />
@@ -189,7 +203,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771874381631</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Prototype + SSH">
+      <option name="closed" value="true" />
+      <created>1771875281722</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1771875281723</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,7 +225,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="Prototype + SSH" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ECE_1896_Solver$main.coverage" NAME="main Coverage Results" MODIFIED="1771713912727" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ECE_1896_Solver$main.coverage" NAME="main Coverage Results" MODIFIED="1771954930150" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ECE_1896_Solver$gpio_run.coverage" NAME="gpio_run Coverage Results" MODIFIED="1771707440909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
