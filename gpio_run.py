@@ -130,8 +130,8 @@ signal.signal(signal.SIGINT,  shutdown)
 signal.signal(signal.SIGTERM, shutdown)
 
 # ---------- ATTACH SWITCH ----------
-breaker_switch.when_pressed  = open_breaker   # switch HIGH  → open
-breaker_switch.when_released = close_breaker  # switch LOW   → close
+breaker_switch.when_pressed  = close_breaker  # switch HIGH (ON)  → LEDs sequence, pins OFF
+breaker_switch.when_released = open_breaker   # switch LOW  (OFF) → LEDs off, pins ON
 
 # ---------- STARTUP ----------
 solution.do_power_flow()
