@@ -19,7 +19,7 @@ SWITCH_PIN   = 26          # <-- change if you wire to a different pin
 SIGNAL_PINS  = [4, 17, 27, 22, 23, 24, 25]
 
 # NeoPixel (addressable LED) config on GPIO 18
-LED_COUNT    = 8           # adjust to your strip length
+LED_COUNT    = 54
 LED_PIN      = 18
 LED_FREQ_HZ  = 800_000
 LED_DMA      = 10
@@ -88,7 +88,7 @@ def open_breaker():
     solution.do_power_flow()
 
     _signal_pins_on()        # Assert all 7 output signals
-    sequence_blue_green()    # Blue → green NeoPixel sequence on GPIO 18
+    leds_off()               # LEDs off when breaker opens
 
     print("Breaker Opened:")
     c.print_nodal_voltage()
@@ -100,7 +100,7 @@ def close_breaker():
     solution.do_power_flow()
 
     _signal_pins_off()       # De-assert all 7 output signals
-    solid_green()            # Steady green while closed
+    sequence_blue_green()    # Blue → green NeoPixel sequence on GPIO 18
 
     print("Breaker Closed:")
     c.print_nodal_voltage()
@@ -123,7 +123,7 @@ breaker_switch.when_released = close_breaker  # switch LOW   → close
 
 # ---------- STARTUP ----------
 solution.do_power_flow()
-solid_green()   # Nominal state: steady green
+solid_green()   # Nominal state: steady green — change to leds_off() if preferred
 print("System running...  (Ctrl+C to stop)")
 
 while True:
