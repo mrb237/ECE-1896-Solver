@@ -97,7 +97,7 @@ def open_breaker():
     c.breakers["Breaker1"].open()
     solution.do_power_flow()
 
-    _signal_pins_on()        # Assert all 7 output signals
+    _signal_pins_off()       # De-assert all 7 output signals
     _seq_running = False     # Stop LED sequence
     leds_off()               # Clear strip
 
@@ -111,7 +111,7 @@ def close_breaker():
     c.breakers["Breaker1"].close()
     solution.do_power_flow()
 
-    _signal_pins_off()       # De-assert all 7 output signals
+    _signal_pins_on()        # Assert all 7 output signals
     _seq_running = True      # Start LED sequence
 
     print("Breaker Closed:")
