@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d5f8b555-9829-4147-8910-3c32e3e02545" name="Changes" comment="Prototype + SSH">
-      <change beforePath="$PROJECT_DIR$/gpio_run.py" beforeDir="false" afterPath="$PROJECT_DIR$/gpio_run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +118,8 @@
       <workItem from="1772113846482" duration="755000" />
       <workItem from="1772432765740" duration="582000" />
       <workItem from="1772474655673" duration="82000" />
-      <workItem from="1775146635524" duration="2738000" />
+      <workItem from="1775146635524" duration="3671000" />
+      <workItem from="1775242752111" duration="360000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <option name="closed" value="true" />
@@ -256,7 +257,23 @@
       <option name="project" value="LOCAL" />
       <updated>1775148922613</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Prototype + SSH">
+      <option name="closed" value="true" />
+      <created>1775149414419</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1775149414420</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Prototype + SSH">
+      <option name="closed" value="true" />
+      <created>1775149517632</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1775149517632</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
