@@ -68,6 +68,7 @@ def _seq_step():
     """Called repeatedly by the main loop to advance the animation one frame."""
     global _seq_offset
     if _seq_running:
+        print(f"  seq_step offset={_seq_offset}")
         sequence_leds(_seq_offset)
         _seq_offset = (_seq_offset + 1) % len(BASE_PATTERN)
 
@@ -87,10 +88,12 @@ solution.do_power_flow()
 def _signal_pins_on():
     for o in signal_outputs:
         o.on()
+        print(f"  PIN {o.pin} -> ON, value={o.value}")
 
 def _signal_pins_off():
     for o in signal_outputs:
         o.off()
+        print(f"  PIN {o.pin} -> OFF, value={o.value}")
 
 def open_breaker():
     global _seq_running
@@ -113,6 +116,7 @@ def close_breaker():
 
     _signal_pins_on()        # Assert all 7 output signals
     _seq_running = True      # Start LED sequence
+    print(f"close_breaker called — _seq_running={_seq_running}")
 
     print("Breaker Closed:")
     c.print_nodal_voltage()
