@@ -4,7 +4,12 @@ import time
 import signal
 import sys
 from gpiozero import OutputDevice, Button
+from gpiozero import Device
+from gpiozero.pins.rpigpio import RPiGPIOFactory
 from rpi_ws281x import PixelStrip, Color
+
+# Force gpiozero to use RPi.GPIO backend to avoid PWM conflict on GPIO 18
+Device.pin_factory = RPiGPIOFactory()
 
 from Circuit import Circuit
 from Solution import Solution
