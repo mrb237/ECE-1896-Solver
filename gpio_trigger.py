@@ -17,6 +17,12 @@ def setup():
     GPIO.setup(INPUT_PIN,  GPIO.IN,  pull_up_down=GPIO.PUD_DOWN)
     GPIO.setup(OUTPUT_PIN, GPIO.OUT, initial=GPIO.LOW)
 
+def on_edge(channel):
+    state = GPIO.input(INPUT_PIN)
+    GPIO.output(OUTPUT_PIN, state)
+    label = "ON" if state else "OFF"
+    print(f"GPIO {INPUT_PIN} changed -> GPIO {OUTPUT_PIN}: {label}")
+
 def on_rising(channel):
     """Called when GPIO 13 goes HIGH."""
     GPIO.output(OUTPUT_PIN, GPIO.HIGH)
@@ -29,12 +35,7 @@ def on_falling(channel):
 
 def main():
     setup()
-    GPIO.add_event_detect(INPUT_PIN, GPIO.BOTH, callback=None, bouncetime=50)
-    GPIO.add_event_callback(INPUT_PIN, on_rising  if GPIO.input(INPUT_PIN) else on_falling)
-    # Use edge detection so both rising and falling edges are caught
-    GPIO.remove_event_detect(INPUT_PIN)
-    GPIO.add_event_detect(INPUT_PIN, GPIO.RISING,  callback=on_rising,  bouncetime=50)
-    GPIO.add_event_detect(INPUT_PIN, GPIO.FALLING, callback=on_falling, bouncetime=50)
+    GPIO.add_event_detect(INPUT_PIN, GPIO.BOTH, callback=on_edge, bouncetime=50)
 
     print(f"Monitoring GPIO {INPUT_PIN}. Press Ctrl+C to exit.")
     try:
